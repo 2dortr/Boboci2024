@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 
-//incercare
+
 import org.firstinspires.ftc.teamcode.drive.robot.Robot;
 
 @TeleOp(name="MecanumDriveMode", group="Linear OpMode")
