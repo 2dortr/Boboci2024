@@ -1,3 +1,5 @@
+//importa clase predefinite din alt package
+
 package org.firstinspires.ftc.teamcode.drive.robot;
 
 import androidx.annotation.NonNull;
@@ -50,8 +52,14 @@ import static org.firstinspires.ftc.teamcode.drive.robot.DriveConstants.kA;
 import static org.firstinspires.ftc.teamcode.drive.robot.DriveConstants.kStatic;
 import static org.firstinspires.ftc.teamcode.drive.robot.DriveConstants.kV;
 
+
+
 @Config
+  
 public class  SampleMecanumDrive extends MecanumDrive {
+
+//initializare variabile si obiecte in extensia de clasa  a lui MecanumDrive
+    
     public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(0, 0, 0);
     public static PIDCoefficients HEADING_PID = new PIDCoefficients(0, 0, 0);
 
@@ -79,6 +87,9 @@ public class  SampleMecanumDrive extends MecanumDrive {
     private List<Integer> lastEncVels = new ArrayList<>();
 
     public SampleMecanumDrive(HardwareMap hardwareMap) {
+
+//aici incepe efectiv main-ul 
+//initializeaza componentele        
         super(kV, kA, kStatic, TRACK_WIDTH, TRACK_WIDTH, LATERAL_MULTIPLIER);
 
         follower = new HolonomicPIDVAFollower(TRANSLATIONAL_PID, TRANSLATIONAL_PID, HEADING_PID,
@@ -97,6 +108,8 @@ public class  SampleMecanumDrive extends MecanumDrive {
                 DriveConstants.LOGO_FACING_DIR, DriveConstants.USB_FACING_DIR));
         imu.initialize(parameters);
 
+       //seteaza motoarele pe pozitia de stationare
+
         leftFront = hardwareMap.get(DcMotorEx.class, "leftFront");
         leftRear = hardwareMap.get(DcMotorEx.class, "leftRear");
         rightRear = hardwareMap.get(DcMotorEx.class, "rightRear");
@@ -107,6 +120,8 @@ public class  SampleMecanumDrive extends MecanumDrive {
         rightRear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        //seteaza motoarele pe setarile de mers
+
         motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
 
         for (DcMotorEx motor : motors) {
@@ -115,6 +130,8 @@ public class  SampleMecanumDrive extends MecanumDrive {
             motor.setMotorType(motorConfigurationType);
         }
 
+        //seteaza motoarele sa mearga folosind un encoder??
+        
         if (RUN_USING_ENCODER) {
             setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }
@@ -125,7 +142,8 @@ public class  SampleMecanumDrive extends MecanumDrive {
             setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, MOTOR_VELO_PID);
         }
 
-
+        //pune motoarele in reverse
+        
         rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
         List<Integer> lastTrackingEncPositions = new ArrayList<>();
