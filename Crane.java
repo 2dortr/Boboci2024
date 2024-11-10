@@ -22,7 +22,7 @@ public class Crane {
     public static double craneP = 0.017, craneI = 0, craneD = 0.0005;
     double craneIntegralSum = 0;
     public static double craneF = 0.28;
-    public static int craneOffset = 90;
+    public static int craneOffset = 100;
     public double slideExtension = 0;
     public double slideEncoderLastPosition = 0;
     private final double threetwelvemotorticksindegree = 537.7 / 360;
